@@ -52,7 +52,7 @@ public class FakePersonDataAccessService implements PersonDao{
                 }
                 return 0;
             })
-            .orElse(null);
+            .orElse(0);
     }
 
 }
