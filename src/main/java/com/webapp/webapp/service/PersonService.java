@@ -33,11 +33,20 @@ public class PersonService {
         return personDao.selectPersonById(id);
     }
 
-    public int deletePerson(UUID id){
+    public Optional<Person> getPersonByName(String name){
+        return personDao.selectPersonByName(name);
+    }
+
+    public int deletePersonById(UUID id){
         return personDao.deletePersonById(id);
     }
 
-    public int updatePerson(UUID id, Person newPerson){
-        return personDao.updatePersonById(id, newPerson);
+    public int deletePersonByName(String name){
+        return personDao.deletePersonByName(name);
     }
+
+    public int updatePersonById(Person newPerson){
+        return personDao.updatePersonById(newPerson);
+    }
+
 }

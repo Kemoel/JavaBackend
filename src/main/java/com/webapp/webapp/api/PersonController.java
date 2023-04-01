@@ -40,19 +40,31 @@ public class PersonController {
         return personService.getAllPeople();
     }
 
-    @GetMapping(path = "{id}")
-    public Person getPersonById(@PathVariable("id") UUID id){
-        return personService.getPersonById(id)
+    @GetMapping(path = "byId")
+    public Person getPersonById(@Valid @NonNull @RequestBody Person person){
+        return personService.getPersonById(person.getId())
             .orElse(null);
     }
 
-    @DeleteMapping(path = "{id}")
-    public void deletePersonById(@PathVariable("id") UUID id){
-        personService.deletePerson(id);
+    @GetMapping(path = "byName")
+    public Person getPersonByname(@Valid @NonNull @RequestBody Person person){
+        return personService.getPersonByName(person.getName())
+            .orElse(null);
     }
 
-    @PutMapping(path = "{id}")
-    public void updatePerson(@PathVariable("id") UUID id, @Valid @NonNull @RequestBody Person personToUpdate){
-        personService.updatePerson(id, personToUpdate);
+    @DeleteMapping(path = "byId")
+    public void deletePersonById(@Valid @NonNull @RequestBody Person person){
+        personService.deletePersonById(person.getId());
     }
+
+    @DeleteMapping(path = "byName")
+    public void deletePersonByName(@Valid @NonNull @RequestBody Person person){
+        personService.deletePersonByName(person.getName());
+    }
+
+    @PutMapping(path = "byId")
+    public void updatePersonById(@Valid @NonNull @RequestBody Person personToUpdate){
+        personService.updatePersonById(personToUpdate);
+    }
+
 }
