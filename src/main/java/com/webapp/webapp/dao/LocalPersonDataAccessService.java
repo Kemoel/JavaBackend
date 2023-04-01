@@ -32,6 +32,13 @@ public class LocalPersonDataAccessService implements PersonDao{
     }
 
     @Override
+    public Optional<Person> selectPersonByName(String name) {
+        return DB.stream()
+            .filter(person -> person.getName().equals(name))
+            .findFirst();
+    }
+
+    @Override
     public int deletePersonById(UUID id) {
         Optional<Person> personMaybe = selectPersonById(id);
         if(personMaybe.isEmpty()){
@@ -42,12 +49,17 @@ public class LocalPersonDataAccessService implements PersonDao{
     }
 
     @Override
-    public int updatePersonById(UUID id, Person update) {
-        return selectPersonById(id)
+    public int deletePersonByName(String name) {
+        return 1;
+    }
+
+    @Override
+    public int updatePersonById(Person update) {
+        return selectPersonById(update.getId())
             .map(person -> {
                 int indexOfPersonToUpdate = DB.indexOf(person);
                 if(indexOfPersonToUpdate >= 0){
-                    DB.set(indexOfPersonToUpdate, new Person(id, update.getName()));
+                    DB.set(indexOfPersonToUpdate, new Person(update.getId(), update.getName()));
                     return 1;
                 }
                 return 0;

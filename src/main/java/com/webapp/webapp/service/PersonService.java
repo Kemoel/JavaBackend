@@ -22,7 +22,12 @@ public class PersonService {
     }
 
     public int insertPerson(Person person){
-        return personDao.insertPerson(person);
+        try {
+            getPersonByName(person.getName());
+        } catch (Exception e){
+            return personDao.insertPerson(person);
+        }
+        throw new IllegalStateException("name taken");
     }
 
     public List<Person> getAllPeople(){
@@ -30,22 +35,47 @@ public class PersonService {
     }
 
     public Optional<Person> getPersonById(UUID id){
+        try {
+            personDao.selectPersonById(id);
+        } catch (Exception e){
+            throw new IllegalStateException("id does not exist");
+        }
         return personDao.selectPersonById(id);
     }
 
     public Optional<Person> getPersonByName(String name){
+        try {
+            personDao.selectPersonByName(name);
+        } catch (Exception e){
+            throw new IllegalStateException("name does not exist");
+        }
         return personDao.selectPersonByName(name);
     }
 
     public int deletePersonById(UUID id){
+        try {
+            personDao.deletePersonById(id);
+        } catch (Exception e){
+            throw new IllegalStateException("id does not exist");
+        }
         return personDao.deletePersonById(id);
     }
 
     public int deletePersonByName(String name){
+        try {
+            personDao.deletePersonByName(name);
+        } catch (Exception e){
+            throw new IllegalStateException("name does not exist");
+        }
         return personDao.deletePersonByName(name);
     }
 
     public int updatePersonById(Person newPerson){
+        try {
+            personDao.updatePersonById(newPerson);
+        } catch (Exception e){
+            throw new IllegalStateException("id does not exist");
+        }
         return personDao.updatePersonById(newPerson);
     }
 
