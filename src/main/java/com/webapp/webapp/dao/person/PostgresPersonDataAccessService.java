@@ -1,6 +1,4 @@
-package com.webapp.webapp.dao;
-
-import com.webapp.webapp.model.Person;
+package com.webapp.webapp.dao.person;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-@Repository("postgres")
-public class PostgresDataAccessService implements PersonDao{
+import com.webapp.webapp.model.person.Person;
+
+@Repository("postgresPerson")
+public class PostgresPersonDataAccessService implements PersonDao{
 
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public PostgresDataAccessService(JdbcTemplate jdbcTemplate){
+    public PostgresPersonDataAccessService(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
 

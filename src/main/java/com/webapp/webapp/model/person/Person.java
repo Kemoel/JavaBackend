@@ -1,4 +1,4 @@
-package com.webapp.webapp.model;
+package com.webapp.webapp.model.person;
 
 import java.util.UUID;
 

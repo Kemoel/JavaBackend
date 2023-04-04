@@ -1,12 +1,11 @@
-package com.webapp.webapp.service;
-
-import com.webapp.webapp.model.Person;
+package com.webapp.webapp.service.person;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.webapp.webapp.dao.PersonDao;
+import com.webapp.webapp.dao.person.PersonDao;
+import com.webapp.webapp.model.person.Person;
 
 import java.util.UUID;
 import java.util.List;
@@ -17,7 +16,7 @@ public class PersonService {
     private final PersonDao personDao;
 
     @Autowired
-    public PersonService(@Qualifier("postgres") PersonDao personDao){
+    public PersonService(@Qualifier("postgresPerson") PersonDao personDao){
         this.personDao = personDao;
     }
 

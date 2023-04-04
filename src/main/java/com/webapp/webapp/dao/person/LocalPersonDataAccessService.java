@@ -1,8 +1,8 @@
-package com.webapp.webapp.dao;
-
-import com.webapp.webapp.model.Person;
+package com.webapp.webapp.dao.person;
 
 import org.springframework.stereotype.Repository;
+
+import com.webapp.webapp.model.person.Person;
 
 import java.util.UUID;
 import java.util.List;

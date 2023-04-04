@@ -1,8 +1,9 @@
-package com.webapp.webapp.dao;
-
-import com.webapp.webapp.model.Person;
+package com.webapp.webapp.dao.person;
 
 import java.util.UUID;
+
+import com.webapp.webapp.model.person.Person;
+
 import java.util.List;
 import java.util.Optional;
 

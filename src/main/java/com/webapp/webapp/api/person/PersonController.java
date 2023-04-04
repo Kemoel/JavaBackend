@@ -1,6 +1,7 @@
-package com.webapp.webapp.api;
+package com.webapp.webapp.api.person;
 
-import com.webapp.webapp.service.PersonService;
+import com.webapp.webapp.model.person.Person;
+import com.webapp.webapp.service.person.PersonService;
 
 import jakarta.validation.Valid;
 
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.webapp.webapp.model.Person;
 
 import java.util.List;
 
